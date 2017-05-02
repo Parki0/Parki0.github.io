@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="test.css">
+  <title>Truthiness</title>
+</head>
+
+
+  <button class="accordion">What truthiness is:</button>
+  <div class="panel">
+    <div class="python_code">
+        <code>
+        <pre>
+a = None
+
+if [1,2,3]:
+    a = True
+else:
+    a = False
+
+print(a) # True
+</pre> 
+        </code>
+      </div>
+      <p>Truthiness is about that.<br>
+      That's because the above is same as:</p>
+      
+      <div class="python_code">
+        <code>
+        <pre>
+a = None
+
+if bool([1,2,3]):
+    a = True
+else:
+    a = False
+
+print(a) # True
+</pre> 
+        </code>
+        </div>
+        <p>And</p>
+        <div class="python_code">
+        <code>
+        <pre>
+print(bool([1,2,3])) # True
+</pre> 
+        </code>
+        </div>
+  </div>
+
+  <button class="accordion">Truthiness for built-in objects</button>
+  <div class="panel">
+    <button class="accordion">Falsey</button>
+      <div class="panel">
+        <button class="accordion">False</button>
+          <div class="panel">
+            <div class="python_code">
+        <code>
+        <pre>
+print(bool(False)) # False
+</pre> 
+        </code>
+        </div>
+      </div>
+      <button class="accordion">None</button>
+          <div class="panel">
+            <div class="python_code">
+        <code>
+        <pre>
+print(bool(None)) # False
+</pre> 
+        </code>
+        </div>
+      </div>
+      <button class="accordion">0</button>
+          <div class="panel">
+            <div class="python_code">
+        <code>
+        <pre>
+print(bool(0)) # False
+</pre> 
+        </code>
+        </div>
+      </div>
+      <button class="accordion">len(obj) == 0</button>
+          <div class="panel">
+            <div class="python_code">
+        <code>
+        <pre>
+obj = []
+print(bool(obj)) # False
+</pre> 
+        </code>
+        </div>
+      </div>
+          </div>
+
+           <button class="accordion">Truthy</button>
+      <div class="panel">
+        <p>Everything that isn't falsey.</p>
+      </div>
+
+      </div>
+
+     
+
+  </div>
+
+  
+
+  <button class="accordion">Truthiness for custom objects</button>
+  <div class="panel">
+    <button class="accordion">By default is True</button>
+      <div class="panel">
+        <div class="python_code">
+        <code>
+        <pre>
+class Bar(): pass
+
+obj = Bar()
+
+print(bool(obj)) # True
+</pre> 
+        </code>
+        </div>
+      </div>
+      <button class="accordion">Could be override by __bool__</button>
+      <div class="panel">
+        <div class="python_code">
+          <code>
+          <pre>
+class Bar():
+    def __bool__(self):
+        return False
+
+obj = Bar()
+
+print(bool(obj)) # False
+</pre>      
+          </code>
+        </div>
+      </div>
+
+      <button class="accordion">__len__ matters too</button>
+      <div class="panel">
+        <div class="python_code">
+          <code>
+          <pre>
+class Bar():
+    def __len__(self):
+        return 0
+
+obj = Bar()
+
+print(bool(obj)) # False
+</pre>      
+          </code>
+        </div>
+      </div>
+
+      <button class="accordion">__bool__ has priority over __len__ </button>
+      <div class="panel">
+        <div class="python_code">
+          <code>
+          <pre>
+class Bar():
+    def __len__(self):
+        return 10
+
+    def __bool__(self):
+        return False
+
+obj = Bar()
+
+print(bool(obj)) # False
+</pre>      
+          </code>
+        </div>
+      </div>
+
+      <button class="accordion">The above won't work for the class itself</button>
+      <div class="panel">
+        <div class="python_code">
+          <code>
+          <pre>
+class Bar():
+    def __bool__(self):
+        return False
+
+print(bool(Bar)) # True
+</pre>      
+          </code>
+        </div>
+      </div>
+
+  </div>
+
+</body>
+</html>
+
+<script type="text/javascript">
+  var acc = document.getElementsByClassName("accordion");
+var i;
+
+for (i = 0; i < acc.length; i++) {
+  acc[i].onclick = function(){
+
+    this.classList.toggle("active");
+
+    var panel = this.nextElementSibling;
+    if (panel.style.display === "block") {
+      panel.style.display = "none";
+    } else {
+      panel.style.display = "block";
+    }
+  }
+}
+</script>
