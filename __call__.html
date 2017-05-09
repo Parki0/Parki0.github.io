@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="pythontutorial.css">
+  <title></title>
+</head>
+<body>
+
+<h1>What __call__ is</h1>
+<!-- HTML generated using hilite.me --><div style="background: #272822; overflow:auto;width:auto;border:solid gray;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%"><span style="color: #66d9ef">class</span> <span style="color: #a6e22e">Bar</span><span style="color: #f8f8f2">():</span>
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">__init__</span><span style="color: #f8f8f2">(self):</span>
+        <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;__init__&#39;</span><span style="color: #f8f8f2">)</span>
+
+    <span style="color: #66d9ef">def</span> <span style="color: #a6e22e">__call__</span><span style="color: #f8f8f2">(self):</span>
+        <span style="color: #66d9ef">print</span><span style="color: #f8f8f2">(</span><span style="color: #e6db74">&#39;__call__&#39;</span><span style="color: #f8f8f2">)</span>
+
+<span style="color: #f8f8f2">a</span> <span style="color: #f92672">=</span> <span style="color: #f8f8f2">Bar()</span>
+<span style="color: #f8f8f2">a()</span>
+</pre></div>
+
+
+  <p>
+    Class + () == __init__
+  </p>
+  <p>
+    Instance + () == __call__
+  </p>
+
+
+
+
+
+
+
+
+<a href="index.html">main</a>
+
+
+</body>
+</html>
+
+<script type="text/javascript">
+  var acc = document.getElementsByClassName("accordion");
+  var i;
+
+for (i = 0; i < acc.length; i++) {
+    acc[i].onclick = function(){
+
+        this.classList.toggle("active");
+
+        var panel = this.nextElementSibling;
+        if (panel.style.display === "block") {
+            panel.style.display = "none";
+        } else {
+            panel.style.display = "block";
+        }
+    }
+}
+</script>
